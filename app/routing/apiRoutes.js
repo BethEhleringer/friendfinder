@@ -1,8 +1,25 @@
+//LOAD DATA
+// Link routes to a series of "data" sources.
+// These data sources hold arrays of info on 'friends".
+//===========
 
-// Displays all friends
+var friendsData = require("../data/friends");
+
+//===========
+// ROUTING
+//============
+
+module.exports = function(app){
+
+  // API GET Requests
+  
+
 app.get("/api/friends", function(req, res) {
-  return res.json(friends);
+  res.json(friendsData);
 });
+
+
+
 
 
 // Create New Friends - takes in JSON input
@@ -22,4 +39,4 @@ app.post("/api/friends", function(req, res) {
   res.json(newfriend);
 });
 
-
+}
