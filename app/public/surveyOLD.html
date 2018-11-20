@@ -159,8 +159,8 @@
               <h2 class="modal-title"><strong>Best Match</strong></h2>
             </div>
             <div class="modal-body">
-              <h2 id="match-name"></h2>   
-              <img id="match-img"  alt="">
+              <h2 id="match-name"></h2>
+              <img id="match-img" src=" " alt="">
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -181,7 +181,6 @@
 
     <script type="text/javascript">
     // Chosen CSS
-    var selector
     var config = {
       ".chosen-select": {},
       ".chosen-select-deselect": {
@@ -245,19 +244,11 @@
         };
 
         // AJAX post the data to the friends API.
-        $.post("/api/friends", userData, function(data){
-          if (data){
-            alert("Thanks for completing the survey!");
-          } else {
-            alert("Please finish answering the questions.");
-          }
-          });
-        
-        $.get("/api/friends", friends, function(data) {
+        $.post("/api/friends", userData, function(data) {
 
-        // Grab the result from the AJAX post so that the best match's name and photo are displayed.
-          $("#match-name").text(matches[0].name);
-          $("#match-img").attr("src", matches[0].photo);
+          // Grab the result from the AJAX post so that the best match's name and photo are displayed.
+          $("#match-name").text(data.name);
+          $("#match-img").attr("src", data.photo);
 
           // Show the modal with the best match
           $("#results-modal").modal("toggle");

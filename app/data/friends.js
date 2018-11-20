@@ -1,6 +1,6 @@
 // Friends (DATA)
 // =============================================================
-var newFriend = [
+var userData = [
     {
         "name": "Dollie", 
         "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Dolley_Madison.jpg/800px-Dolley_Madison.jpg",
@@ -19,6 +19,10 @@ var newFriend = [
       },
     
 ]
+
+//var userData = [];
+
+
 
 var friends = [
     {
@@ -110,6 +114,11 @@ var friends = [
 
   ];
 
+  var matches = [
+      
+  ];
+  module.exports = matches;
+
   // Compare scores
   //Loop through all answers and all 'friends'.
   //You will need two 'for' loops.
@@ -127,7 +136,7 @@ var friendScores = [];
       //loop through score arrays to compare individual scores
 for (j = 0; j < 10; j++) {
     //Compare absolute values of differences.
-    var diff = Math.abs(friends[i].scores[j] - newFriend[0].scores[j]);
+    var diff = Math.abs(friends[i].scores[j] - userData[0].scores[j]);
     
 
 //push diff into totalDiff array.
@@ -157,8 +166,13 @@ function reportLowScore() {
     for (k = 0; k < friendScores.length; k++) {
         if (friendScores[k] === lowScore) {
             console.log(friends[k].name);
+            matches.push(friends[k]);
+            console.log("Show matches." + JSON.stringify(matches));
         }
-    }
+    }   
+//    $("#match-name").append("<h2>" + matches[0].name + "</h2>");
+// $("#match-image").append("<img src='" + matches[0].img + "'>")
+
 }
 reportLowScore();
 };

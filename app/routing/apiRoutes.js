@@ -3,7 +3,7 @@
 // These data sources hold arrays of info on 'friends".
 //===========
 
-var friendsData = require("../data/friends");
+var friends = require("../data/friends");
 
 //===========
 // ROUTING
@@ -15,7 +15,7 @@ module.exports = function(app){
   
 
 app.get("/api/friends", function(req, res) {
-  res.json(friendsData);
+  res.json(friends);
 });
 
 
@@ -26,17 +26,17 @@ app.get("/api/friends", function(req, res) {
 app.post("/api/friends", function(req, res) {
   // req.body hosts is equal to the JSON post sent from the user
   // This works because of our body parsing middleware
-  var newfriend = req.body;
+  var userData = req.body;
 
   // Using a RegEx Pattern to remove spaces from newFriend
   // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
-  newfriend.routeName = newfriend.name.replace(/\s+/g, "").toLowerCase();
+ // newfriend.routeName = newfriend.name.replace(/\s+/g, "").toLowerCase();
 
-  console.log(newfriend);
+  console.log(userData);
 
-  friends.push(newfriend);
+  friends.push(userData);
 
-  res.json(newfriend);
+  res.json(userData);
 });
 
 }
